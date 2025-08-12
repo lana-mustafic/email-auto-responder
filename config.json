@@ -1,0 +1,28 @@
+{
+  "rules": [
+    {
+      "name": "urgent_emails",
+      "condition": {
+        "field": "subject",
+        "contains": "urgent"
+      },
+      "action": {
+        "reply": true,
+        "mark_as_read": true,
+        "reply_template": "Thank you for your urgent email! I'll respond within 24 hours."
+      }
+    },
+    {
+      "name": "Lana Mustafić",
+      "condition": {
+        "field": "from",
+        "contains": "llanamustafic@gmail.com"
+      },
+      "action": {
+        "reply": true,
+        "mark_as_read": true,
+        "reply_template": "Priority response: I'm on it!"
+      }
+    }
+  ]
+}

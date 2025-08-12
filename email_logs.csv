@@ -1,0 +1,3 @@
+Timestamp,Subject,From,Rule,Action
+2025-08-12 03:09:23,URGENT: testing auto_responder,"""Lana Mustafić"" <llanamustafic@gmail.com>",urgent_emails,Replied
+2025-08-12 03:09:23,URGENT: testing auto_responder,"""Lana Mustafić"" <llanamustafic@gmail.com>",Lana MustafiÄ‡,Replied
