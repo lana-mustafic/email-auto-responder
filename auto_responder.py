@@ -5,8 +5,8 @@ from googleapiclient.discovery import build
 from logger import log_action
 from auth import get_gmail_service
 
-def load_config():
-    with open('config.json') as f:
+def load_config(config_path='config.json'):
+    with open(config_path) as f:
         return json.load(f)
 
 def create_reply(sender, subject, template):
@@ -25,12 +25,13 @@ def send_reply(service, original_msg_id, reply_text, mark_as_read):
             body={'removeLabelIds': ['UNREAD']}
         ).execute()
 
-def process_emails():
+def process_emails(config_path='config.json', log_path='email_logs.csv'):
     print("Starting email processing...")
+    print(f"Using config: {config_path}, log: {log_path}")
     
     # Initialize log file with header
     try:
-        with open('email_logs.csv', 'w', newline='', encoding='utf-8') as f:
+        with open(log_path, 'w', newline='', encoding='utf-8') as f:
             writer = csv.writer(f)
             writer.writerow(["Timestamp", "Subject", "From", "Rule", "Action"])
         print("Initialized log file")
@@ -39,7 +40,7 @@ def process_emails():
         return
 
     try:
-        config = load_config()
+        config = load_config(config_path)
         creds = get_gmail_service()
         service = build('gmail', 'v1', credentials=creds)
         print("Authenticated with Gmail API")
